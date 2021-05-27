@@ -21,7 +21,7 @@
                 <div class="row">
 
                     <div class="col-sm">
-                        <input type="text" id="notas" class="form-control">
+                        <input type="text" id="notas" class="form-control" required>
                     </div>
 
                     <div class="col-sm-1">
@@ -29,17 +29,19 @@
                     </div>
 
                     <div class="col-sm">
-                        <input type="text" id="resultado" class="form-control">
+                        <input type="text" id="resultado" class="form-control" readonly>
                     </div>
                 </div>    
                     <div class="row pt-4">
                         <div class="col-sm">
-                            <button type="submit" class="btn-sm btn-block btn-primary">Ver Média</button>
+                            <button type="submit" id="send" class="btn-sm btn-block btn-primary">Calcular Média</button>
                         </div>
                     </div>
             </div>
+                <h5 id="notasDigitadas"></h5>
         </div>
     </div>
+    <script src="tarefa1.js"></script>
 </body>
 
 </html>
