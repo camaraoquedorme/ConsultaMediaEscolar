@@ -33,12 +33,13 @@ function CalculaMedia(notas = []){
 inputNotas.addEventListener("keydown", function(evento){
     if(evento.key === "Enter"){
         const nota = parseFloat(inputNotas.value);
-        console.log(nota);
 
         if(inputNotas.value.trim() === ""){
             alert("Campo não pode estar vazio");
         }else if(isNaN(nota) ){
             alert("Caracter Inválido")
+        }else if(inputNotas.value < 0 || inputNotas.value >10){
+            alert("A nota não deve ser menor que 0 ou maior que 10")
         }else{
             arrayNotas.push(nota);
         }
