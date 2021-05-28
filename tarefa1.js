@@ -8,53 +8,61 @@ const sendButton = document.getElementById("send");
 
 const inputResultado = document.getElementById("resultado");
 
-function atualizaPlaceholder(){
-    inputNotas.placeholder = `Digite a ${arrayNotas.length + 1}º nota`;
+function atualizaPlaceholder() {
+  inputNotas.placeholder = `Digite a ${arrayNotas.length + 1}º nota`;
 };
 
 atualizaPlaceholder();
 
-function atualizaNotasDigitadas(){
-    notasDigitadas.textContent = `Notas Digitadas: ${arrayNotas.join(", ")}`;
+function atualizaNotasDigitadas() {
+  notasDigitadas.textContent = `Notas Digitadas: ${arrayNotas.join(", ")}`;
 };
 
 atualizaNotasDigitadas();
 
-function CalculaMedia(notas = []){
+function CalculaMedia(notas = []) {
 
-    let soma = 0;
-    for(let contador = 0; contador < notas.length; contador++){
-        soma = soma + notas[contador];
-    };
-    return soma / notas.length;
+  let soma = 0;
+  for (let contador = 0; contador < notas.length; contador++) {
+    soma = soma + notas[contador];
+  };
+  return soma / notas.length;
 };
 
 
-inputNotas.addEventListener("keydown", function(evento){
-    if(evento.key === "Enter"){
-        const nota = parseFloat(inputNotas.value);
+inputNotas.addEventListener("keydown", function (evento) {
 
-        if(inputNotas.value.trim() === ""){
-            alert("Campo não pode estar vazio");
-        }else if(isNaN(nota) ){
-            alert("Caracter Inválido")
-        }else if(inputNotas.value < 0 || inputNotas.value >10){
-            alert("A nota não deve ser menor que 0 ou maior que 10")
-        }else{
-            arrayNotas.push(nota);
-        }
+  if (evento.key === "Enter") {
+    const nota = parseFloat(inputNotas.value);
 
-        inputNotas.value = "";
+    if (inputNotas.value.trim() === "") {
+      alert("Campo não pode estar vazio");
+    }
 
-        atualizaPlaceholder();
-        atualizaNotasDigitadas();
-    };
-});
+    else if (isNaN(nota)) {
+      alert("Caracter Inválido")
+    }
 
-sendButton.addEventListener("click", function(evente){
-    inputResultado.value = CalculaMedia(arrayNotas).toFixed(2);
+    else if (inputNotas.value < 0 || inputNotas.value > 10) {
+      alert("A nota não deve ser menor que 0 ou maior que 10")
+    }
 
-    arrayNotas = [];
+    else {
+      arrayNotas.push(nota);
+    }
+
+    inputNotas.value = "";
 
     atualizaPlaceholder();
+    atualizaNotasDigitadas();
+  };
+});
+
+sendButton.addEventListener("click", function (evente) {
+
+  inputResultado.value = CalculaMedia(arrayNotas).toFixed(2);
+
+  arrayNotas = [];
+
+  atualizaPlaceholder();
 });
